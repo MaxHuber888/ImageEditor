@@ -1,0 +1,73 @@
+GUI GUIDE:
+-Info Section:
+This panel (colored yellow) contains useful information about the current state of the program. The top line of text will state the result of the last action inputted by the user, and the bottom line of text will state how many layers there are and which layer is currently being viewed in the viewport.
+
+-Save/Load Section:
+This panel (colored red) contains all operations relating to saving and loading files. The textfield is for entering the filepath (within the res/ folder). The menu to the right of the textfield allows the user to specify the filetype, for loading or saving. The Save and Load buttons underneath the textfield and menu allow the user to save the current layer or load a new image, using the textfield and menu as the file name and file type respectively. The Run Script button under the Save Button allows the user to run a script (the file type menu is ignored for this operation, only the textfield is important. Also, this is how multi-image imports are initiated). Next to the Run Script button is the Export All Layers Button. This button initiates a multi-image export. Like with the Run Script Button, only the textfield matters here, to determine the name of the script and image files once exported. 
+
+-Apply to Current Section:
+This panel (colored green) contains all operations that can be applied to the current layer. The Apply Effect Button applies the currently selected effect to the layer. The menu to the right of this button allows the user to select from all supported effects. Underneath the Apply Effect Button is the Remove Layer Button. This button removes the current layer from the model.
+
+-Layer Operations Section:
+This panel (colored cyan) contains all operations that involve specifying a layer. The spinner allows the user to choose which layer is to be affected. The Visible Button makes the specified layer visible. The Invisible Button makes the specified layer invisible. The Move To Top Button moves the specified layer to the top, making it the current layer and the one seen in the viewport.
+
+-Viewport:
+This panel takes up the right half of the window, and is where one can view the current top layer. If the image is bigger than the panel, the user can use two scroll bars in this panel to navigate the image.
+
+SUPPORTED CONTROLLER COMMANDS:
+
+file filename
+-reads a text file with the specified name and uses its content as the new input
+
+quit
+-stops reading the input
+
+load filename filetype visibility
+-imports the specified imageImpl (either a ppm, jpg, or png) into the model
+with the given visibility (true or false)
+
+save filename filetype
+-exports the top layer with the given name and file type (either a ppm, jpg, or png)
+
+blur
+-applies the blur effect to the top layer
+
+sharpen
+-applies the sharpen effect to the top layer
+
+greyscale
+-applies the greyscale effect to the top layer
+
+sepia
+-applies the sepia effect to the top layer
+
+mosaic
+-applies the mosaic effect to the top layer (with predefined params)
+
+downscale
+-applies the downscale effect to the top layer (decreases width and height by 1/2)
+
+remove
+-removes the top layer
+
+toTop index
+- moves the layer of given index to the top (setting it as the "current" layer)
+
+invisible index
+-makes the layer of given index invisible
+
+visible index
+-makes the layer of given index visible
+
+exportAll filename
+-exports all layers as .ppm images (images will be
+named "filename0.ppm", "filename1.ppm", "filename2.ppm")
+-exports a script that will load all the images back in
+when run using the "file" command (this script will be
+named "filename.txt")
+
+SCRIPT CONDITIONS:
+Any command that is not listed will not be recognized. If a proper command is used, but
+the proper information is left out, nothing will happen. If a proper command is used, and all the
+information is provided and in the right form, but the action is invalid (for example,
+"file invalidname ppm false"), then the controller will throw an error.

@@ -1,0 +1,12 @@
+load cat png true
+load fish png true
+toTop 0
+blur
+sharpen
+greyscale
+sepia
+invisible 1
+visible 1
+exportAll testingEverything
+save catTEST png
+file script2
